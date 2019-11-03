@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3e375296dd5684182f773fbb22b5a6, type: 3}
+  m_Name: _newCard
+  m_EditorClassIdentifier: 
+  gameplayName: 
+  cost: 
+  effects:
+  - effect: 0
+    parameter: 0
+    parameterValue: 5
+    target: 0
+  nbrOfUtilisation: 0
+  names: {fileID: 0}
+  descriptions: {fileID: 0}
