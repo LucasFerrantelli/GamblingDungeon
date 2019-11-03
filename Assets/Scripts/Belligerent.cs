@@ -7,24 +7,47 @@ public class Belligerent : MonoBehaviour
     public int life;
     public int power;
     public int modifier;
-    public Deck initialDeck;
-    public Deck actualDeck;
-    public List<Cards> hand;
+    public List<Cards> initialDeck;
+    public List<InGameCard> allCards;
+    public List<InGameCard> actualDeck;
+    public List<InGameCard> hand;
 
     public Belligerent opponent;
     public CombatManager combatManager;
 
     public int powerCeiling;
 
+    private void Start()
+    {
+        
+    }
+
+    void InitializeCards()
+    {
+        for (int i = 0; i < initialDeck.Count; i++)
+        {
+            allCards.Add( Instantiate(combatManager.inGameCard).GetComponent<InGameCard>());
+        }
+        for (int i = 0; i < initialDeck.Count; i++)
+        {
+            allCards[i].cost = initialDeck[i].cost;
+            allCards[i].descriptions = initialDeck[i].descriptions;
+            allCards[i].effects = initialDeck[i].effects;
+            allCards[i].gameplayName = initialDeck[i].gameplayName;
+            allCards[i].names = initialDeck[i].names;
+            allCards[i].nbrOfUtilisation = initialDeck[i].nbrOfUtilisation;
+        }
+    }
+
     void EndTurn()
     {
         ResetDeck();
         ResetHand();
-    }
+    }     
 
     void ResetDeck()
     {
-        actualDeck = initialDeck;
+        allCards = actualDeck;
     }
 
     private void ResetHand()
@@ -32,17 +55,17 @@ public class Belligerent : MonoBehaviour
         hand.Clear();
     }
 
-    void AddCardToHand(Cards card)
+    void AddCardToHand(InGameCard card)
     {
         hand.Add(card);
     }
 
     int CardsLeftInDeck()
     {
-        return actualDeck.cards.Count;
+        return actualDeck.Count;
     }
 
-    Cards GetARandomCardInDeck()
+    InGameCard GetARandomCardInDeck()
     {
         int _nbrOfCards = CardsLeftInDeck();
         if (_nbrOfCards == 0)
@@ -52,13 +75,13 @@ public class Belligerent : MonoBehaviour
         }
         else
         {
-            return actualDeck.cards[Random.Range(0, _nbrOfCards)];
+            return actualDeck[Random.Range(0, _nbrOfCards)];
         }
     }
 
     void DrawCard()
     {
-        Cards _card = GetARandomCardInDeck();
+        InGameCard _card = GetARandomCardInDeck();
         hand.Add(_card);
         AddPower(_card.cost[0]);
     }

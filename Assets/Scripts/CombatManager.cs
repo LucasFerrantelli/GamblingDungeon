@@ -6,6 +6,8 @@ public class CombatManager : MonoBehaviour
 {
     public Belligerent[] belligerents;
 
+    public GameObject inGameCard;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,34 +18,48 @@ public class CombatManager : MonoBehaviour
         belligerents[1].combatManager = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void UseCard(Belligerent owner, int cardNumber)
     {
-        Cards _cardPlayed = owner.hand[cardNumber];
+        InGameCard _cardPlayed = owner.hand[cardNumber];
         //Add Power
         owner.AddPower(_cardPlayed.cost[0]);
         //Read All the effect in order.
         for (int i = 0; i < _cardPlayed.effects.Length; i++)
         {
-            ReadEffect(_cardPlayed.effects[i]);
+            ReadEffect(_cardPlayed.effects[i], owner);
         }
 
         //Remove Card from Hand
-        if(_cardPlayed.nbrOfUtilisation == 0)
+        _cardPlayed.nbrOfUtilisation--;
+        if(_cardPlayed.nbrOfUtilisation <= 0)
         {
             owner.hand.Remove(_cardPlayed);
         }
         
     }
 
-    public void ReadEffect(EffectStruct effectStruct)
+    public void ReadEffect(EffectStruct effectStruct, Belligerent owner)
     {
+        switch (effectStruct.effect)
+        {
+            case Effects.Effect.AddPower:
+                break;
+            case Effects.Effect.DealDamage:
+                break;
+            case Effects.Effect.Draw:
+                break;
+            case Effects.Effect.Heal:
+                break;
+            case Effects.Effect.SetHp:
+                break;
+            case Effects.Effect.SetPower:
+                break;
 
+
+
+
+        }
     }
 
 }
