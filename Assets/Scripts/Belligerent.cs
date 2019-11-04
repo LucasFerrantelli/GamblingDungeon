@@ -15,6 +15,8 @@ public class Belligerent : MonoBehaviour
     public Belligerent opponent;
     public CombatManager combatManager;
 
+    public bool controlledByPlayer;
+
     public int powerCeiling;
 
     private void Start()
@@ -36,6 +38,12 @@ public class Belligerent : MonoBehaviour
             allCards[i].gameplayName = initialDeck[i].gameplayName;
             allCards[i].names = initialDeck[i].names;
             allCards[i].nbrOfUtilisation = initialDeck[i].nbrOfUtilisation;
+            if(controlledByPlayer)
+            {
+                
+            }
+
+            allCards[i].UpdateInfos();
         }
     }
 
@@ -79,11 +87,12 @@ public class Belligerent : MonoBehaviour
         }
     }
 
-    void DrawCard()
+    void DrawCard(bool cost)
     {
         InGameCard _card = GetARandomCardInDeck();
         hand.Add(_card);
-        AddPower(_card.cost[0]);
+        if(cost)
+            AddPower(_card.cost[0]);
     }
 
     void CheckPower()

@@ -8,10 +8,12 @@ public class CombatManager : MonoBehaviour
 
     public GameObject inGameCard;
 
+    public static CombatManager Instance;
 
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         belligerents[0].opponent = belligerents[1];
         belligerents[1].opponent = belligerents[0];
         belligerents[0].combatManager = this;
@@ -19,15 +21,21 @@ public class CombatManager : MonoBehaviour
     }
 
 
-    public void UseCard(Belligerent owner, int cardNumber)
+    public void UseCard(Belligerent owner, InGameCard _cardPlayed)
     {
-        InGameCard _cardPlayed = owner.hand[cardNumber];
         //Add Power
         owner.AddPower(_cardPlayed.cost[0]);
         //Read All the effect in order.
         for (int i = 0; i < _cardPlayed.effects.Length; i++)
         {
-            ReadEffect(_cardPlayed.effects[i], owner);
+            if(ReadEffect(_cardPlayed.effects[i], owner))
+            {
+
+            }
+            else
+            {
+                break;
+            }
         }
 
         //Remove Card from Hand
@@ -39,7 +47,7 @@ public class CombatManager : MonoBehaviour
         
     }
 
-    public void ReadEffect(EffectStruct effectStruct, Belligerent owner)
+    public bool ReadEffect(EffectStruct effectStruct, Belligerent owner)
     {
         switch (effectStruct.effect)
         {
@@ -60,6 +68,7 @@ public class CombatManager : MonoBehaviour
 
 
         }
+        return true;
     }
 
 }
