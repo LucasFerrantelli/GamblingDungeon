@@ -16,13 +16,11 @@ public class Belligerent : MonoBehaviour
     public CombatManager combatManager;
 
     public bool controlledByPlayer;
+    public bool isPlaying;
+    public int id;
 
     public int powerCeiling;
 
-    private void Start()
-    {
-        
-    }
 
     void InitializeCards()
     {
@@ -51,6 +49,7 @@ public class Belligerent : MonoBehaviour
     {
         ResetDeck();
         ResetHand();
+        combatManager.EndTurn(id);
     }     
 
     void ResetDeck()

@@ -20,6 +20,12 @@ public class CombatManager : MonoBehaviour
         belligerents[1].combatManager = this;
     }
 
+    public void EndTurn(int belligerent)
+    {
+        belligerents[belligerent].isPlaying = false;
+        belligerents[Mathf.RoundToInt( Mathf.Sqrt( belligerent - 1))].isPlaying = true;
+    }
+
 
     public void UseCard(Belligerent owner, InGameCard _cardPlayed)
     {
