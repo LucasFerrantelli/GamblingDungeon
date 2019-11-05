@@ -16,8 +16,15 @@ MonoBehaviour:
   cost: 
   effects:
   - effect: 0
-    parameter: 0
-    parameterValue: 5
+    parameters:
+    - combinaisonType: 0
+      parameter: 4
+      parameterValue: 0
+      parametersOwner: 0
+    - combinaisonType: 0
+      parameter: 0
+      parameterValue: 0
+      parametersOwner: 0
     target: 0
   nbrOfUtilisation: 0
   names: {fileID: 0}
