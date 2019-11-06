@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6510860679824835369}
   - component: {fileID: 7835999284341521435}
   m_Layer: 0
-  m_Name: CardName
+  m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 4677492385155266086}
   - component: {fileID: 1256133292169227667}
   m_Layer: 0
-  m_Name: Description
+  m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 6787498870335280437}
   - component: {fileID: 4094731282228863281}
   m_Layer: 0
-  m_Name: Cost
+  m_Name: CostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,7 +1115,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8395421778173422235}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631526391679821020}
+        m_MethodName: PlayCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6988134486408215157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,9 +1282,10 @@ MonoBehaviour:
   nbrOfUtilisation: 0
   names: {fileID: 0}
   descriptions: {fileID: 0}
+  owner: {fileID: 0}
   nameField: {fileID: 7835999284341521435}
-  descriptionField: {fileID: 0}
-  costField: {fileID: 0}
+  descriptionField: {fileID: 1256133292169227667}
+  costField: {fileID: 4094731282228863281}
   useButton: {fileID: 6165210271725294298}
 --- !u!1 &8999879410196242651
 GameObject:

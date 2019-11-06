@@ -46,3 +46,31 @@ MonoBehaviour:
   belligerents: []
   inGameCard: {fileID: 8595846655237969270, guid: e257dce4e3d00364b831553596b888f3,
     type: 3}
+  cardDispositions:
+  - cardsPlacement:
+    - 0
+  - cardsPlacement:
+    - -3
+    - 3
+  - cardsPlacement:
+    - -4.5
+    - 0
+    - 4.5
+  - cardsPlacement:
+    - -5
+    - -2.5
+    - 2.5
+    - 5
+  - cardsPlacement:
+    - -7
+    - -3.5
+    - 0
+    - 3.5
+    - 7
+  - cardsPlacement:
+    - -9.99
+    - -6.66
+    - -3.33
+    - 3.33
+    - 6.66
+    - 9.99

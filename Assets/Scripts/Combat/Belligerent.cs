@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Belligerent : MonoBehaviour
 {
@@ -24,13 +25,14 @@ public class Belligerent : MonoBehaviour
 
     public int powerCeiling = 21;
 
+    public GameObject handPivot;
 
     public void InitializeCards()
     {
         //Instantiate cards
         for (int i = 0; i < initialDeck.Count; i++)
         {
-            allCards.Add( Instantiate(combatManager.inGameCard).GetComponent<InGameCard>());
+            allCards.Add( Instantiate(combatManager.inGameCard, handPivot.transform).GetComponent<InGameCard>());
         }
         //assign to each card the parameters
         for (int i = 0; i < initialDeck.Count; i++)
@@ -42,15 +44,23 @@ public class Belligerent : MonoBehaviour
             allCards[i].names = initialDeck[i].names;
             allCards[i].nbrOfUtilisation = initialDeck[i].nbrOfUtilisation;
 
+            allCards[i].transform.localPosition = new Vector3(22, 2.4f, 0);
+
             allCards[i].owner = this;
             //If controlled by player, show the "use button"
             if(controlledByPlayer)
             {
-                
+                allCards[i].useButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                allCards[i].useButton.gameObject.SetActive(false);
             }
             //Visualization of the parameters
             allCards[i].UpdateInfos();
         }
+
+        ResetDeck();
     }
 
     void EndTurn()
@@ -62,7 +72,7 @@ public class Belligerent : MonoBehaviour
 
     void ResetDeck()
     {
-        allCards = actualDeck;
+        actualDeck = allCards;
     }
 
     private void ResetHand()
@@ -73,6 +83,18 @@ public class Belligerent : MonoBehaviour
     void AddCardToHand(InGameCard card)
     {
         hand.Add(card);
+
+        ReOrderHand();
+        
+    }
+
+    void ReOrderHand()
+    {
+        int _nbrOfCardInHand = hand.Count;
+        for (int i = 0; i < _nbrOfCardInHand; i++)
+        {
+            hand[i].transform.DOMoveX(handPivot.transform.position.x + combatManager.cardDispositions[_nbrOfCardInHand - 1].cardsPlacement[i], 1);
+        }
     }
 
     int CardsLeftInDeck()
@@ -100,10 +122,12 @@ public class Belligerent : MonoBehaviour
     {
         InGameCard _card = GetARandomCardInDeck();
         actualDeck.Remove(_card);
-        hand.Add(_card);
+        AddCardToHand(_card);
         if(cost)
             AddPower(_card.cost[0], true);
     }
+
+
 
     //Check actual power, can end turn, play jackpot, or nothing happen.
     void CheckPower()

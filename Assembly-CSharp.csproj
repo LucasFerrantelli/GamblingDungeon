@@ -62,10 +62,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\Combat\Belligerent.cs" />
+    <Compile Include="Assets\Scripts\Combat\CardDisposition.cs" />
     <Compile Include="Assets\Scripts\Combat\Cards.cs" />
     <Compile Include="Assets\Scripts\Combat\CombatManager.cs" />
-    <Compile Include="Assets\Scripts\Combat\Deck.cs" />
     <Compile Include="Assets\Scripts\Combat\EffectStruct.cs" />
     <Compile Include="Assets\Scripts\Combat\Effects.cs" />
     <Compile Include="Assets\Scripts\Combat\InGameCard.cs" />
@@ -75,6 +82,9 @@
     <Compile Include="Assets\Scripts\Macro\MacroManager.cs" />
     <Compile Include="Assets\Scripts\Macro\Persona.cs" />
     <Compile Include="Assets\Scripts\Macro\PlayerInstance.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviorEditor.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectDrawer.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectEditor.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -88,6 +98,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
@@ -311,6 +322,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0b9/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/UnityProjects/GamblingDungeon/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0b9/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -7,6 +7,7 @@ public class CombatManager : MonoBehaviour
     public Belligerent[] belligerents;
 
     public GameObject inGameCard;
+    public CardDisposition[] cardDispositions;
 
     public static CombatManager Instance;
 
