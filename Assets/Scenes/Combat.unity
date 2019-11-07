@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 17301593}
   - component: {fileID: 17301592}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Interface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,11 +372,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1485478157795136750, guid: a79ef8af46a0f2e4cbea8b125539aae3,
         type: 3}
-      propertyPath: belligerents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1485478157795136750, guid: a79ef8af46a0f2e4cbea8b125539aae3,
-        type: 3}
       propertyPath: belligerents.Array.data[0]
       value: 
       objectReference: {fileID: 1635827523}
@@ -385,6 +380,22 @@ PrefabInstance:
       propertyPath: belligerents.Array.data[1]
       value: 
       objectReference: {fileID: 1303550849}
+    - target: {fileID: 6254824798623233040, guid: a79ef8af46a0f2e4cbea8b125539aae3,
+        type: 3}
+      propertyPath: belligerent
+      value: 
+      objectReference: {fileID: 1635827523}
+    - target: {fileID: 6254824798623233040, guid: a79ef8af46a0f2e4cbea8b125539aae3,
+        type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 8638381079378131636, guid: 5b2877c315985484cafab66ffdc5c3af,
+        type: 3}
+    - target: {fileID: 6254824798623233040, guid: a79ef8af46a0f2e4cbea8b125539aae3,
+        type: 3}
+      propertyPath: drawButton
+      value: 
+      objectReference: {fileID: 2123676872}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a79ef8af46a0f2e4cbea8b125539aae3, type: 3}
 --- !u!114 &1303550849 stripped
@@ -714,7 +725,7 @@ GameObject:
   - component: {fileID: 2123676873}
   - component: {fileID: 2123676872}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DrawButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

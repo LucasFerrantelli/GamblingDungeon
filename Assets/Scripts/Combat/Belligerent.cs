@@ -20,12 +20,22 @@ public class Belligerent : MonoBehaviour
     public CombatManager combatManager;
 
     public bool controlledByPlayer;
-    public bool isPlaying;
     public int id;
 
+    [Header ("InGame Variable")]
     public int powerCeiling = 21;
+    public bool isPlaying;
+    [Tooltip ("True if an effect disabling drawing is on, like if the powerCeiling is reached. Reset each turn")]
+    public bool disableDrawing;
+    [Tooltip("Check if the Belligerent can actually draw")]
+    public bool canDraw;
+    [Tooltip("When stunned, a belligerent cant draw or play card")]
+    public bool stunned;
 
+
+    [Header ("Assignations")]
     public GameObject handPivot;
+    public GameObject cardInitPosition;
 
     public void InitializeCards()
     {
@@ -43,8 +53,9 @@ public class Belligerent : MonoBehaviour
             allCards[i].gameplayName = initialDeck[i].gameplayName;
             allCards[i].names = initialDeck[i].names;
             allCards[i].nbrOfUtilisation = initialDeck[i].nbrOfUtilisation;
+            allCards[i].gotADrawEffect = initialDeck[i].gotADrawEffect;
 
-            allCards[i].transform.localPosition = new Vector3(22, 2.4f, 0);
+            ResetCardPosition(allCards[i].gameObject);
 
             allCards[i].owner = this;
             //If controlled by player, show the "use button"
@@ -63,12 +74,25 @@ public class Belligerent : MonoBehaviour
         ResetDeck();
     }
 
-    void EndTurn()
+    public void ResetCardPosition(GameObject _card)
+    {
+        _card.transform.position = cardInitPosition.transform.position;
+    }
+
+    public void EndTurn()
     {
         ResetDeck();
         ResetHand();
+        stunned = false;
         combatManager.EndTurn(id);
-    }     
+    }
+    
+    public void StartTurn()
+    {
+        disableDrawing = false;
+        UpdateAllCardsStatut();
+        UpdateDrawStatut();
+    }
 
     void ResetDeck()
     {
@@ -83,9 +107,17 @@ public class Belligerent : MonoBehaviour
     void AddCardToHand(InGameCard card)
     {
         hand.Add(card);
-
+        UpdateDrawStatut();
         ReOrderHand();
         
+    }
+
+    void UpdateAllCardsStatut()
+    {
+        for (int i = 0; i < allCards.Count; i++)
+        {
+            allCards[i].UpdateCardStatut();
+        }
     }
 
     void ReOrderHand()
@@ -117,14 +149,72 @@ public class Belligerent : MonoBehaviour
         }
     }
 
+    public void RemoveCardFromDeck(InGameCard _card)
+    {
+        actualDeck.Remove(_card);
+        UpdateDrawStatut();
+    }
+
+    public void BanishCardFromCombat(InGameCard _card)
+    {
+
+    }
+
     //Pick a random card in deck, remove it from deck, add it to the hand + (optional : AddPower) 
     public void DrawCard(bool cost)
     {
         InGameCard _card = GetARandomCardInDeck();
-        actualDeck.Remove(_card);
+        RemoveCardFromDeck(_card);
         AddCardToHand(_card);
-        if(cost)
+        if (cost)
             AddPower(_card.cost[0], true);
+
+    }
+
+    //check if the player can draw a card, either with the draw button or a draw effect
+    public void UpdateDrawStatut()
+    {
+        //if the deck still got card and the hand isnt full
+        if(actualDeck.Count > 0 && hand.Count <6)
+        {
+            for(int i = 0; i < hand.Count; i++)
+            {
+                if (hand[i].gotADrawEffect)
+                {
+                    hand[i].cantUseForDrawEffect = false;
+                    hand[i].UpdateCardStatut();
+                }
+            }
+            //if the target isnt stunned and got no drawing interdiction
+            if ( disableDrawing == false && stunned == false)
+            {
+                canDraw = true;
+                
+
+            }
+            //else, cant draw
+            else
+            {
+                canDraw = false;
+
+            }
+        }
+        //if there is no more card to draw or if the hand is full
+        else
+        {
+            canDraw = false;
+            //Each car with a draw effect wont be played
+            for (int i = 0; i < hand.Count; i++)
+            {
+                if(hand[i].gotADrawEffect)
+                {
+                    hand[i].cantUseForDrawEffect = true;
+                    hand[i].UpdateCardStatut();
+                }
+            }
+
+        }
+
     }
 
 
@@ -135,9 +225,20 @@ public class Belligerent : MonoBehaviour
         if(power > powerCeiling)
         {
             print("You lost, Destroy all cards, can't draw anymore.");
+            stunned = true;
+            UpdateDrawStatut();
+            UpdateAllCardsStatut();
+            if (controlledByPlayer)
+            {
+                combatManager.playerDisplay.ColorBars(21);
+            }
         }
         else
         {
+            if (controlledByPlayer)
+            {
+                combatManager.playerDisplay.ColorBars(power);
+            }
             modifier = ladder.ladder[power];
 
             if (power == powerCeiling)
@@ -158,6 +259,11 @@ public class Belligerent : MonoBehaviour
         power += _powerToAdd;
         if(checkPower)
             CheckPower();
+    }
+    //this function is played when a card is played. Use it to play function
+    public void UseCard()
+    {
+        UpdateDrawStatut();
     }
 
 }

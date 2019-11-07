@@ -14,6 +14,8 @@ public class Cards : ScriptableObject
     public LocalizedText names;
     public LocalizedText descriptions;
 
+    public bool gotADrawEffect;
+
 }
 
 

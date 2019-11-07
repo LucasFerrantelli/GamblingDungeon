@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _newCard
   m_EditorClassIdentifier: 
   gameplayName: 
-  cost: 05000000
+  cost: 01000000
   effects:
   - effect: 0
     parameters:
@@ -29,3 +29,4 @@ MonoBehaviour:
   nbrOfUtilisation: 0
   names: {fileID: 11400000, guid: be482581fcb509b429f1b8660dfd8962, type: 2}
   descriptions: {fileID: 11400000, guid: bdb01ac2f22098543870114d705d1243, type: 2}
+  gotADrawEffect: 0

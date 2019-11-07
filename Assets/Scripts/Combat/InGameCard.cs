@@ -16,8 +16,11 @@ public class InGameCard : MonoBehaviour
     public LocalizedText names;
     public LocalizedText descriptions;
 
+    public bool gotADrawEffect;
+
     [Header("Gameplay Infos")]
     public Belligerent owner;
+    public bool cantUseForDrawEffect;
 
     [Header("Prefab Assignation")]
     public TextMeshPro nameField;
@@ -28,12 +31,22 @@ public class InGameCard : MonoBehaviour
 
     public void UpdateInfos()
     {
-        
         nameField.text = names.text[0];
         descriptionField.text = descriptions.text[0];
 
         costField.text = cost[0].ToString();
-        
+    }
+
+    public void UpdateCardStatut()
+    {
+        if(owner.stunned || cantUseForDrawEffect)
+        {
+            useButton.interactable = false;
+        }
+        else
+        {
+            useButton.interactable = true;
+        }
     }
 
     public void PlayCard()

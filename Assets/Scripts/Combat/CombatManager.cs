@@ -9,13 +9,16 @@ public class CombatManager : MonoBehaviour
     public GameObject inGameCard;
     public CardDisposition[] cardDispositions;
 
+    public PlayerDisplay playerDisplay;
+
     public static CombatManager Instance;
 
     // Start is called before the first frame update
     void Start()
     {
         InitializeCombatParameters();
-        
+        playerDisplay.InitializeBar();
+        belligerents[0].StartTurn();
     }
     //Set Instance, the opponents, create all belligerents cards
     public void InitializeCombatParameters()
@@ -55,6 +58,7 @@ public class CombatManager : MonoBehaviour
     //Play a full card
     public void UseCard(Belligerent owner, InGameCard _cardPlayed)
     {
+        
         //Read All the effect in order.
         for (int i = 0; i < _cardPlayed.effects.Length; i++)
         {
@@ -72,9 +76,10 @@ public class CombatManager : MonoBehaviour
         _cardPlayed.nbrOfUtilisation--;
         if(_cardPlayed.nbrOfUtilisation <= 0)
         {
+            owner.ResetCardPosition(_cardPlayed.gameObject);
             owner.hand.Remove(_cardPlayed);
         }
-        
+        owner.UseCard();
     }
 
     //Play the effectStruct

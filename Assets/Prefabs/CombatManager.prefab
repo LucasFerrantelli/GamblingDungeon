@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4723421938523194240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851701769379328545}
+  m_Layer: 0
+  m_Name: BarPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &851701769379328545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723421938523194240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.5, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5501266558245887549}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6887503232559182095
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +57,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5501266558245887549}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43,7 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdd040c332fad04fa866bc95167802c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  belligerents: []
+  belligerents:
+  - {fileID: 0}
+  - {fileID: 0}
   inGameCard: {fileID: 8595846655237969270, guid: e257dce4e3d00364b831553596b888f3,
     type: 3}
   cardDispositions:
@@ -57,10 +90,10 @@ MonoBehaviour:
     - 0
     - 4.5
   - cardsPlacement:
-    - -5
-    - -2.5
-    - 2.5
-    - 5
+    - -6
+    - -2
+    - 2
+    - 6
   - cardsPlacement:
     - -7
     - -3.5
@@ -68,9 +101,61 @@ MonoBehaviour:
     - 3.5
     - 7
   - cardsPlacement:
-    - -9.99
-    - -6.66
-    - -3.33
-    - 3.33
-    - 6.66
-    - 9.99
+    - -7.5
+    - -4.5
+    - -1.5
+    - 1.5
+    - 4.5
+    - 7.5
+  playerDisplay: {fileID: 6254824798623233040}
+--- !u!1 &8255603320711691462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5501266558245887549}
+  - component: {fileID: 6254824798623233040}
+  m_Layer: 0
+  m_Name: PlayerDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5501266558245887549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255603320711691462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 851701769379328545}
+  m_Father: {fileID: 6887503232559182092}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6254824798623233040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255603320711691462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0465070a924d8bc439169d2559c7abbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belligerent: {fileID: 0}
+  barPrefab: {fileID: 8638381079378131637, guid: 5b2877c315985484cafab66ffdc5c3af,
+    type: 3}
+  bars: []
+  barInitialPosition: {fileID: 4723421938523194240}
+  fullBarColor: {r: 0.6666667, g: 0, b: 0, a: 1}
+  emptyBarColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
