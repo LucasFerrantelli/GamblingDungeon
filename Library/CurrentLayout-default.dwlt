@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 60
+  controlID: 85
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 436
+  controlID: 90
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8e360000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: beccffffd4d5ffff96ddffff98ddffffbcddffff1ee6ffffd0e6ffff98f7ffff16faffff26faffff28faffff5cfaffff68fbffff243400003e3400009a360000b4360000da3600008e3e0000ca3e0000
+      m_ExpandedIDs: 5cefffffc4efffff18f1ffff3cf1ffff3ef1ffff68fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -478,9 +478,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 12.648987, y: -6.919998, z: 0}
+    m_Target: {x: 11.422513, y: -2.000574, z: -2.049848}
     speed: 2
-    m_Value: {x: 12.648987, y: -6.919998, z: 0}
+    m_Value: {x: 11.422513, y: -2.000574, z: -2.049848}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -530,9 +530,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.2920513
+    m_Target: 6.1561275
     speed: 2
-    m_Value: 7.2920513
+    m_Value: 6.1561275
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -660,20 +660,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\UnityProjects\GamblingDungeon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 52}
-    m_SelectedIDs: cc340000
-    m_LastClickedID: 13516
-    m_ExpandedIDs: 00000000aa340000ac340000ae340000ce34000000ca9a3b
+    scrollPos: {x: 0, y: 44}
+    m_SelectedIDs: c0340000
+    m_LastClickedID: 13504
+    m_ExpandedIDs: 00000000aa340000ac340000ae340000c6340000d234000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -9298
+  m_LastSelectedObjectID: -3792
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52

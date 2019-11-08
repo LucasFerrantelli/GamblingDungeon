@@ -56,6 +56,7 @@ public class Belligerent : MonoBehaviour
             allCards[i].names = initialDeck[i].names;
             allCards[i].nbrOfUtilisation = initialDeck[i].nbrOfUtilisation;
             allCards[i].gotADrawEffect = initialDeck[i].gotADrawEffect;
+            allCards[i].soToReferTo = initialDeck[i];
 
             ResetCardPosition(allCards[i].gameObject);
 

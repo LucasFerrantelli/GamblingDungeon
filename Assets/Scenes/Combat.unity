@@ -795,15 +795,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3261601124976692701, guid: 35a82090fdd18654098ff18029f22522,
-        type: 3}
-      propertyPath: id
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3261601124976692700, guid: 35a82090fdd18654098ff18029f22522,
         type: 3}
       propertyPath: m_Name
       value: Belligerent (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261601124976692701, guid: 35a82090fdd18654098ff18029f22522,
+        type: 3}
+      propertyPath: id
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3261601124976692698, guid: 35a82090fdd18654098ff18029f22522,
         type: 3}

@@ -7,7 +7,6 @@ using TMPro;
 public class PlayerDisplay : MonoBehaviour
 {
     public Belligerent belligerent;
-    public GameObject barPrefab;
     public List<SpriteRenderer> bars;
 
     public Button drawButton;
@@ -19,6 +18,16 @@ public class PlayerDisplay : MonoBehaviour
     public Color fullBarColor;
     public Color emptyBarColor;
 
+    [Header ("Prefabs")]
+    public GameObject barPrefab;
+    public GameObject seperationPrefab;
+
+    public void InitializeUI()
+    {
+        InitializeBar();
+        InitializeLadder();
+
+    }
 
     public void InitializeBar()
     {
@@ -27,6 +36,14 @@ public class PlayerDisplay : MonoBehaviour
             GameObject _bar = Instantiate(barPrefab, transform);
             bars.Add(_bar.GetComponent<SpriteRenderer>());
             bars[i].transform.position = barInitialPosition.transform.position + new Vector3(0, 0.5f, 0) * i;
+        }
+    }
+
+    void InitializeLadder()
+    {
+        for (int i = 0; i < belligerent.ladder.ladder.Length; i++)
+        {
+
         }
     }
 

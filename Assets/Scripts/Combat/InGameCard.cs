@@ -16,6 +16,8 @@ public class InGameCard : MonoBehaviour
     public LocalizedText names;
     public LocalizedText descriptions;
 
+    public Cards soToReferTo;
+
     public bool gotADrawEffect;
 
     [Header("Gameplay Infos")]

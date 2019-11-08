@@ -20,7 +20,7 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         InitializeCombatParameters();
-        playerDisplay.InitializeBar();
+        playerDisplay.InitializeUI();
         belligerents[0].StartTurn();
     }
     //Set Instance, the opponents, create all belligerents cards
@@ -103,6 +103,7 @@ public class CombatManager : MonoBehaviour
         _cardPlayed.nbrOfUtilisation--;
         if(_cardPlayed.nbrOfUtilisation <= 0)
         {
+            _cardPlayed.nbrOfUtilisation = _cardPlayed.soToReferTo.nbrOfUtilisation;
             owner.ResetCardPosition(_cardPlayed.gameObject);
             owner.hand.Remove(_cardPlayed);
         }
