@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerDisplay : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerDisplay : MonoBehaviour
     public List<SpriteRenderer> bars;
 
     public Button drawButton;
+    public Button endTurnButton;
+    public TextMeshProUGUI cardsInDeckText;
 
     public GameObject barInitialPosition;
 
@@ -29,19 +32,50 @@ public class PlayerDisplay : MonoBehaviour
 
     public void ColorBars(int barsToColor)
     {
-        for (int i = 0; i < barsToColor; i++)
+        if(barsToColor > 0)
         {
-            bars[i].color = fullBarColor;
+            for (int i = 0; i < barsToColor; i++)
+            {
+                bars[i].color = fullBarColor;
+            }
+            for (int i = bars.Count; i < bars.Count - barsToColor; i--)
+            {
+                bars[i].color = emptyBarColor;
+            }
         }
-        for (int i = bars.Count; i < bars.Count - barsToColor; i--)
+        else
         {
-            bars[i].color = emptyBarColor;
+            for (int i = 0; i < bars.Count; i++)
+            {
+                bars[i].color = emptyBarColor;
+            }
         }
+        
     }
 
     private void FixedUpdate()
     {
+        
         UpdateDrawButtonStatut();
+        UpdateEndTurnButtonStatut();
+        UpdateNbrOfCardText();
+    }
+
+    void UpdateNbrOfCardText()
+    {
+        cardsInDeckText.text = "Draw (" + belligerent.actualDeck.Count + ")";
+    }
+
+    private void UpdateEndTurnButtonStatut()
+    {
+        if(belligerent.isPlaying)
+        {
+            endTurnButton.interactable = true;
+        }
+        else
+        {
+            endTurnButton.interactable = false;
+        }
     }
 
     void UpdateDrawButtonStatut()

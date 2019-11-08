@@ -39,11 +39,13 @@ public class Belligerent : MonoBehaviour
 
     public void InitializeCards()
     {
+        List<InGameCard> _allCards = new List<InGameCard>();
         //Instantiate cards
         for (int i = 0; i < initialDeck.Count; i++)
         {
-            allCards.Add( Instantiate(combatManager.inGameCard, handPivot.transform).GetComponent<InGameCard>());
+            allCards.Add(Instantiate(combatManager.inGameCard, handPivot.transform).GetComponent<InGameCard>());
         }
+
         //assign to each card the parameters
         for (int i = 0; i < initialDeck.Count; i++)
         {
@@ -79,47 +81,55 @@ public class Belligerent : MonoBehaviour
         _card.transform.position = cardInitPosition.transform.position;
     }
 
+    #region TurnManagement
+
+    public void AskForEndTurn()
+    {
+        combatManager.EndTurn(id);
+    }
     public void EndTurn()
     {
+        SetPower(0, true);
         ResetDeck();
         ResetHand();
         stunned = false;
-        combatManager.EndTurn(id);
+        isPlaying = false;
     }
     
-    public void StartTurn()
+    public void StartTurn() 
     {
+        isPlaying = true;
         disableDrawing = false;
         UpdateAllCardsStatut();
         UpdateDrawStatut();
     }
 
+    #endregion
+
+    #region Resets
     void ResetDeck()
     {
-        actualDeck = allCards;
+        actualDeck.Clear();
+        for (int i = 0; i < allCards.Count; i++)
+        {
+            actualDeck.Add(allCards[i]);
+        }
+        
     }
 
     private void ResetHand()
     {
+        for (int i = 0; i < hand.Count; i++)
+        {
+            ResetCardPosition(hand[i].gameObject);
+        }
         hand.Clear();
     }
 
-    void AddCardToHand(InGameCard card)
-    {
-        hand.Add(card);
-        UpdateDrawStatut();
-        ReOrderHand();
-        
-    }
+    #endregion
 
-    void UpdateAllCardsStatut()
-    {
-        for (int i = 0; i < allCards.Count; i++)
-        {
-            allCards[i].UpdateCardStatut();
-        }
-    }
 
+    #region Draw and card access
     void ReOrderHand()
     {
         int _nbrOfCardInHand = hand.Count;
@@ -128,12 +138,17 @@ public class Belligerent : MonoBehaviour
             hand[i].transform.DOMoveX(handPivot.transform.position.x + combatManager.cardDispositions[_nbrOfCardInHand - 1].cardsPlacement[i], 1);
         }
     }
-
+    void AddCardToHand(InGameCard card)
+    {
+        hand.Add(card);
+        UpdateDrawStatut();
+        ReOrderHand();
+        
+    }
     int CardsLeftInDeck()
     {
         return actualDeck.Count;
     }
-
     //Return a random card in deck
     InGameCard GetARandomCardInDeck()
     {
@@ -217,8 +232,10 @@ public class Belligerent : MonoBehaviour
 
     }
 
+    #endregion
 
 
+    #region Power
     //Check actual power, can end turn, play jackpot, or nothing happen.
     void CheckPower()
     {
@@ -260,10 +277,29 @@ public class Belligerent : MonoBehaviour
         if(checkPower)
             CheckPower();
     }
+
+    public void SetPower(int _newPower, bool checkPower)
+    {
+        power = _newPower;
+        if (checkPower)
+            CheckPower();
+    }
+
+    #endregion
+
+    #region CardUse
+    //Check if card is playable
+    void UpdateAllCardsStatut()
+    {
+        for (int i = 0; i < allCards.Count; i++)
+        {
+            allCards[i].UpdateCardStatut();
+        }
+    }
     //this function is played when a card is played. Use it to play function
     public void UseCard()
     {
         UpdateDrawStatut();
     }
-
+    #endregion
 }

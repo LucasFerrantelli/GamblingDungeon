@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    public enum GameState { Player1Playing, Player2Playing, Other}
+
+    public GameState gameState;
     public Belligerent[] belligerents;
 
     public GameObject inGameCard;
@@ -48,11 +51,35 @@ public class CombatManager : MonoBehaviour
     }
 
     //End the turn of the belligerent, start the turn of the other one.
-    public void EndTurn(int belligerent)
+    public void EndTurn(int _belligerent)
+    {
+        gameState = GameState.Other;
+        if (_belligerent == 0)
+        {
+            belligerents[_belligerent].EndTurn();
+            StartTurn(1);
+        }
+        else
+        {
+            belligerents[_belligerent].EndTurn();
+            StartTurn(0);
+        }
+    }
+
+    public void StartTurn(int _belligerent)
     {
         
-        belligerents[belligerent].isPlaying = false;
-        belligerents[Mathf.RoundToInt( Mathf.Sqrt( belligerent - 1))].isPlaying = true;
+        if (_belligerent == 0)
+        {
+            gameState = GameState.Player1Playing;
+            belligerents[_belligerent].StartTurn();
+        }
+        else
+        {
+            gameState = GameState.Player2Playing;
+            belligerents[_belligerent].StartTurn();
+        }
+
     }
 
     //Play a full card

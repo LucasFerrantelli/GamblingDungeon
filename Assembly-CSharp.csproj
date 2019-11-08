@@ -69,6 +69,7 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Scripts\Combat\AIController.cs" />
     <Compile Include="Assets\Scripts\Combat\Belligerent.cs" />
     <Compile Include="Assets\Scripts\Combat\CardDisposition.cs" />
     <Compile Include="Assets\Scripts\Combat\Cards.cs" />

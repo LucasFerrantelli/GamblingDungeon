@@ -39,7 +39,7 @@ public class InGameCard : MonoBehaviour
 
     public void UpdateCardStatut()
     {
-        if(owner.stunned || cantUseForDrawEffect)
+        if (owner.stunned || cantUseForDrawEffect)
         {
             useButton.interactable = false;
         }
