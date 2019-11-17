@@ -41,9 +41,14 @@ public class PlayerDisplay : MonoBehaviour
 
     void InitializeLadder()
     {
+        int _ladderValue = 0;
         for (int i = 0; i < belligerent.ladder.ladder.Length; i++)
         {
-
+            if(_ladderValue != belligerent.ladder.ladder[i])
+            {
+                Instantiate(seperationPrefab, bars[i-1].transform.position, Quaternion.identity);
+            }
+            _ladderValue = belligerent.ladder.ladder[i];
         }
     }
 
