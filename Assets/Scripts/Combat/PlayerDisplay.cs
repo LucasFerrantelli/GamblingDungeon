@@ -8,6 +8,7 @@ public class PlayerDisplay : MonoBehaviour
 {
     public Belligerent belligerent;
     public List<SpriteRenderer> bars;
+    public List<SpriteRenderer> separationBars;
 
     public Button drawButton;
     public Button endTurnButton;
@@ -46,7 +47,9 @@ public class PlayerDisplay : MonoBehaviour
         {
             if(_ladderValue != belligerent.ladder.ladder[i])
             {
-                Instantiate(seperationPrefab, bars[i-1].transform.position, Quaternion.identity);
+                GameObject _separationBar =  Instantiate(seperationPrefab, transform);
+                separationBars.Add(_separationBar.GetComponent<SpriteRenderer>());
+                _separationBar.transform.position = bars[i - 1].transform.position;
             }
             _ladderValue = belligerent.ladder.ladder[i];
         }

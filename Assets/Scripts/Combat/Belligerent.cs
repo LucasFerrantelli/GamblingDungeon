@@ -257,7 +257,15 @@ public class Belligerent : MonoBehaviour
             {
                 combatManager.playerDisplay.ColorBars(power);
             }
-            modifier = ladder.ladder[power];
+            if(power == 0)
+            {
+                modifier = 0;
+            }
+            else
+            {
+                modifier = ladder.ladder[power - 1];
+            }
+            
 
             if (power == powerCeiling)
             {
